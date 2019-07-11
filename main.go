@@ -15,7 +15,9 @@ limitations under the License.
 */
 package main
 
-import "github.com/cheerego/docker-wrapper/cmd"
+import (
+	"github.com/cheerego/docker-wrapper/cmd"
+)
 
 func main() {
 	cmd.Execute()

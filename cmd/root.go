@@ -12,7 +12,7 @@ var rootCmd = &cobra.Command{
 	Long:  `a docker image pull cli tool for gcr.io quay.io`,
 	Run: func(cmd *cobra.Command, args []string) {
 		if versionFlag {
-			fmt.Println("目前版本为1.0.0")
+			fmt.Println(GitTag, GitCommit, GitTreeState, BuildDate, GoVersion, Compiler, Platform)
 		} else {
 			cmd.HelpFunc()(cmd, args)
 		}

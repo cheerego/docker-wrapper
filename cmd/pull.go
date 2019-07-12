@@ -1,12 +1,10 @@
 package cmd
 
 import (
-	"fmt"
 	"github.com/spf13/cobra"
 	"log"
 	"os"
 	"os/exec"
-	"strconv"
 	"strings"
 )
 
@@ -28,11 +26,6 @@ var pullCmd = &cobra.Command{
 		gcr := strings.HasPrefix(image, gcrRegistry)
 		quay := strings.HasPrefix(image, quayRegistry)
 
-		fmt.Println(
-			strconv.FormatBool(k8s),
-			strconv.FormatBool(gcr),
-			strconv.FormatBool(quay),
-		)
 		if k8s {
 			trimPrefixImage := strings.TrimPrefix(image, k8sRegistry)
 			pull(k8sMirror + trimPrefixImage)

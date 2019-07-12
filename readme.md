@@ -1,5 +1,7 @@
 # Introduction
-是否因为 Pull Docker Image 而烦恼。
+迫于拉取镜像很难受，docker pull docker tag 很麻烦。
+
+所以编写了这个工具。
 
 万恶的 `k8s.gcr.io` `gcr.io` `quay.io` .
 

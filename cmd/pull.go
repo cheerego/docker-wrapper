@@ -16,6 +16,8 @@ var k8sMirror string = "gcr.azk8s.cn/google_containers"
 var gcrMirror string = "gcr.azk8s.cn"
 var quayMirror string = "quay-mirror.qiniu.com"
 
+var dockerHubAz string = "dockerhub.azk8s.cn"
+
 var pullCmd = &cobra.Command{
 	Use:   "pull",
 	Short: "Pull an image or a repository from a registry",

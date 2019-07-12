@@ -22,6 +22,9 @@ docker-wrapper pull nginx
 
 # Install
 
+## Download
+[release](https://github.com/cheerego/docker-wrapper/releases)
+
 ## Source build
 ```
 git clone xxx  

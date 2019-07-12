@@ -49,7 +49,10 @@ func pull(cmd string) {
 	command := exec.Command("bash", "-c", "docker pull "+cmd)
 	command.Stdout = os.Stdout
 	command.Stderr = os.Stderr
-	command.Run()
+	e := command.Run()
+	if e != nil {
+		panic(e)
+	}
 }
 
 func tag(cmd string) {
@@ -57,7 +60,10 @@ func tag(cmd string) {
 	command := exec.Command("bash", "-c", "docker tag "+cmd)
 	command.Stdout = os.Stdout
 	command.Stderr = os.Stderr
-	command.Run()
+	e := command.Run()
+	if e != nil {
+		panic(e)
+	}
 }
 
 func init() {

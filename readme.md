@@ -1,7 +1,8 @@
 # Introduction
 
 > 在K8S的使用过程中，总是有一些镜像拉取不下来。
-> 灵感来源于 https://ieevee.com/tech/2019/03/02/azure-gcr-proxy.html
+
+> 灵感来源于 https://ieevee.com/tech/2019/03/02/azure-gcr-proxy.html 
 
 迫于拉取镜像很难受。
 

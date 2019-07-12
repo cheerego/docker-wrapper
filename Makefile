@@ -1,5 +1,7 @@
 SHELL := /bin/bash
 BASEDIR = $(shell pwd)
+export GO111MODULE=on
+export GOPROXY=https://goproxy.io
 
 # build with verison infos
 versionDir = "github.com/cheerego/docker-wrapper/cmd"

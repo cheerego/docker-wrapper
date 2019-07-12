@@ -3,7 +3,7 @@
 万恶的 `k8s.gcr.io` `gcr.io` `quay.io`
 
 # Requirement
-docker in your system and docker command in your envirment
+docker in your system and docker command in your environment
 
 # Usage
 ```bash

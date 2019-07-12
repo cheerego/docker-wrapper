@@ -1,4 +1,4 @@
-# Intruduce
+# Introduction
 是否因为 Pull Docker Image 而烦恼。
 
 万恶的 `k8s.gcr.io` `gcr.io` `quay.io` .

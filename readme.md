@@ -1,4 +1,7 @@
 # Introduction
+
+> 在K8S的使用过程中，总是有一些镜像拉取不下来。
+
 迫于拉取镜像很难受。
 
 频繁重复的`docker pull` `docker tag` 很麻烦。

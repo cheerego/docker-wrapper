@@ -1,5 +1,9 @@
 # Introduction
-迫于拉取镜像很难受，docker pull docker tag 很麻烦。
+迫于拉取镜像很难受。
+
+频繁重复的`docker pull` `docker tag` 很麻烦。
+
+编写shell每次都要改。
 
 所以编写了这个工具。
 

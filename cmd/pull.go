@@ -22,26 +22,31 @@ var pullCmd = &cobra.Command{
 	Use:   "pull",
 	Short: "Pull an image or a repository from a registry",
 	Run: func(cmd *cobra.Command, args []string) {
-		image := args[0]
+		var targetImageName string
+		var sourceImageName string = args[0]
 
-		k8s := strings.HasPrefix(image, k8sRegistry)
-		gcr := strings.HasPrefix(image, gcrRegistry)
-		quay := strings.HasPrefix(image, quayRegistry)
+		k8s := strings.HasPrefix(sourceImageName, k8sRegistry)
+		gcr := strings.HasPrefix(sourceImageName, gcrRegistry)
+		quay := strings.HasPrefix(sourceImageName, quayRegistry)
 
 		if k8s {
-			trimPrefixImage := strings.TrimPrefix(image, k8sRegistry)
-			pull(k8sMirror + trimPrefixImage)
-			tag(k8sMirror + trimPrefixImage + " " + image)
+			trimPrefixImage := strings.TrimPrefix(sourceImageName, k8sRegistry)
+			targetImageName = k8sMirror + trimPrefixImage
 		} else if gcr {
-			trimPrefixImage := strings.TrimPrefix(image, gcrRegistry)
-			pull(gcrMirror + trimPrefixImage)
-			tag(gcrMirror + trimPrefixImage + " " + image)
+			trimPrefixImage := strings.TrimPrefix(sourceImageName, gcrRegistry)
+			targetImageName = gcrMirror + trimPrefixImage
 		} else if quay {
-			trimPrefixImage := strings.TrimPrefix(image, quayRegistry)
-			pull(quayMirror + trimPrefixImage)
-			tag(quayMirror + trimPrefixImage + " " + image)
+			trimPrefixImage := strings.TrimPrefix(sourceImageName, quayRegistry)
+			targetImageName = quayMirror + trimPrefixImage
 		} else {
-			pull(image)
+			targetImageName = sourceImageName
+		}
+
+		pull(targetImageName)
+
+		if k8s || gcr || quay {
+			tag(targetImageName + " " + sourceImageName)
+			rmi(targetImageName)
 		}
 	},
 }
@@ -60,6 +65,16 @@ func pull(cmd string) {
 func tag(cmd string) {
 	log.Println(cmd)
 	command := exec.Command("bash", "-c", "docker tag "+cmd)
+	command.Stdout = os.Stdout
+	command.Stderr = os.Stderr
+	e := command.Run()
+	if e != nil {
+		panic(e)
+	}
+}
+
+func rmi(cmd string) {
+	command := exec.Command("bash", "-c", "docker rmi "+cmd)
 	command.Stdout = os.Stdout
 	command.Stderr = os.Stderr
 	e := command.Run()
